@@ -18,3 +18,13 @@ conexion_indirecta(A, B) :- conexion(A, C, _), conexion_indirecta(C, B).
 % Regla para saber las conexiones de un nodo con sus respectivos costos
 % se usa el ya conocido functor y a la variable anónima se le pasa costo como nombre: 
 % conexion(regina, X, Costo)
+
+%regla para saber si un nodo tiene aristas
+
+tieneAristas(A) :- conexion(A,_,_).
+
+%regla para determinar cual es el costo de un nodo X a un nodo Z pasando por Y
+
+costoDe_viaje(X,Y,Z,Costo) :- conexion(X,Z, Cost1), conexion(Z, Y, Cost2),
+    Costo is Cost1 + Cost2.
+
